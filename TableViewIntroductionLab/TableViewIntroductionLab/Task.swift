@@ -1,10 +1,10 @@
 import Foundation
 
 struct Task {
-    enum Status: Int {
-        case notStarted = 0
-        case inProgress = 1
-        case completed = 2
+    enum Status: String {
+        case notStarted = "Not Started"
+        case inProgress = "In Progress ..."
+        case completed =  "Completed"
     }
     
     let name: String
@@ -66,7 +66,7 @@ struct Task {
     
     static func orderTasks() -> [[Task]] {
         
-        let sortedStatuses = allTasks.sorted { $0.status.rawValue < $1.status.rawValue }
+        let sortedStatuses = allTasks.sorted { $0.status.rawValue > $1.status.rawValue }
         
         let uniqueStatuses = Set(sortedStatuses.map {$0.status.rawValue})
         
@@ -82,7 +82,7 @@ struct Task {
             } else {
                 currentIndex += 1
                 currentTaskStatus = status.status.rawValue
-                arrayOfStatuses[currentTaskStatus ?? 0 ].append(status)
+                arrayOfStatuses[currentIndex].append(status)
             }
         }
         

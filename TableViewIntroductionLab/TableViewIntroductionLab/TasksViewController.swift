@@ -24,10 +24,12 @@ class TasksViewController: UIViewController {
         }
     }
     
+   
     
     func loadData() {
-        statusOfTasks = [Task.allTasks]
+        statusOfTasks = Task.orderTasks()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +60,12 @@ extension TasksViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return statusOfTasks.count
     }
+    
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Task Status : "
-    }
+               
+        return statusOfTasks[section].first?.status.rawValue
+}
+    
+
 }
