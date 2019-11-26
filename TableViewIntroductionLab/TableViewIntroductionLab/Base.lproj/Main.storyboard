@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4LN-lj-zlt">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="812"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eachTaskCell" textLabel="x9H-I4-MQ1" detailTextLabel="2q0-Xv-cIw" style="IBUITableViewCellStyleSubtitle" id="HVI-Zf-PvL">
@@ -46,17 +46,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ac7-Xs-9Y9">
+                                <rect key="frame" x="279" y="46" width="115" height="30"/>
+                                <state key="normal" title="Sort Descending"/>
+                                <connections>
+                                    <action selector="changeTaskOrder:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qc4-HK-q3H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Ac7-Xs-9Y9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="7Sn-ce-RA6"/>
+                            <constraint firstItem="4LN-lj-zlt" firstAttribute="top" secondItem="Ac7-Xs-9Y9" secondAttribute="bottom" constant="8" id="9wX-2J-mkc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ac7-Xs-9Y9" secondAttribute="trailing" constant="20" id="Q83-eB-Ewp"/>
                             <constraint firstItem="4LN-lj-zlt" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hfw-Ry-zZu"/>
-                            <constraint firstItem="4LN-lj-zlt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qc6-19-u4z"/>
+                            <constraint firstItem="4LN-lj-zlt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="qc6-19-u4z"/>
                             <constraint firstAttribute="bottom" secondItem="4LN-lj-zlt" secondAttribute="bottom" id="szz-jS-G1f"/>
                             <constraint firstItem="4LN-lj-zlt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xc9-Np-xfH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="changedTaskButton" destination="Ac7-Xs-9Y9" id="2vh-66-5tc"/>
                         <outlet property="tableView" destination="4LN-lj-zlt" id="RIl-YO-yxn"/>
                     </connections>
                 </viewController>

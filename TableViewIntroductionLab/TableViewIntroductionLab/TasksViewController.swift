@@ -12,12 +12,15 @@ class TasksViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-  /*  var newTasks = [Task]() {
+    
+    @IBOutlet weak var changedTaskButton: UIButton!
+    
+    /*  var newTasks = [Task]() {
         didSet {
             tableView.reloadData()
         }
     }
-    */
+     */
     var statusOfTasks = [[Task]]() {
         didSet {
             tableView.reloadData()
@@ -36,9 +39,67 @@ class TasksViewController: UIViewController {
         tableView.dataSource = self
         loadData()
     }
+    
+     var descending = false
+    
+    func sortEachTask() {
+        
+        var sortedGroup = [[Task]]()
+        
+        
+            
+            if descending == true {
+                for group in statusOfTasks {
+                    
+          let newGroup =  group.sorted { $0.dueDate > $1.dueDate }
+                
+            sortedGroup.append(newGroup)
+                
+                statusOfTasks = sortedGroup
+                    
+                }
+                sortedGroup = [[Task]]()
+                
+            } else if descending == false {
+                
+                for group in statusOfTasks {
+                
+                let newGroup = group.sorted { $0.dueDate < $1.dueDate}
+                
+                sortedGroup.append(newGroup)
+                
+                statusOfTasks = sortedGroup
+                
+            }
+            sortedGroup = [[Task]]()
+        }
+    }
+    
+    @IBAction func changeTaskOrder(_ sender: UIButton) {
+        
+       // var sortedTask = statusOfTasks
+        
+        if sender.titleLabel?.text == "Sort Ascending" {
+            descending.toggle()
+            sortEachTask()
+            sender.setTitle("Sort Descending", for: .normal)
 
-
+    } else {
+            descending.toggle()
+            sortEachTask()
+           sender.setTitle("Sort Ascending", for: .normal)
+                    }
+        
+        
+           
+    }
+        
+        
 }
+        
+                
+
+
 
 extension TasksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
